@@ -1,23 +1,27 @@
 %% Robot Parameters:
 
-I=eye(6);
+I = eye(6);
 
 
-%% Robot Links Length
+%% Robot Links Length:
 %number of links and length of each link:
-Robot.Links = [0 ,10 ,10,0 ];
+Robot.Links = [0, 10, 10 ,0 ];
+Robot.Joint_no = 4;
 
-Robot.Joint_no = 6;
 
-
+%% Description of model components: 
+% RigidLinks , FlexibleLinks
+% ActiveJoints , PassiveJoints , RigidJoints
+Robot.descriptionLink = ["RigidLinks","FlexibleLinks","FlexibleLinks","RigidLinks"];
+Robot.descriptionJoint = ["ActiveJoints","PassiveJoints","PassiveJoints","PassiveJoints"];
 
 %% Joint Types:
 % joint_type = Revolute;(1,2,3)
 % Joint_axis = "X";(1)
 % joint_type = Prismatic;(4,5,6)
 % Joint_axis = "X";(4)
-Robot.JointType = [1,2,3,4,5,6];
- 
+Robot.JointType = [1,4,4,4];
+Robot.numnodes = 9;
 
 
 %% Stiffness Parameters:
