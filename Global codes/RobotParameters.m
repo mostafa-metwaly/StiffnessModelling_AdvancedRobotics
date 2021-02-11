@@ -1,27 +1,29 @@
 %% Robot Parameters:
 
 I = eye(6);
-
+global I 
 
 %% Robot Links Length:
 %number of links and length of each link:
-Robot.Links = [0, 10, 10 ,0 ];
+Robot.Links = [0, 10, 10 ,0,0.1 ];
 Robot.Joint_no = 4;
 
+%% Joint Types:
+% REMEMBER Robot nodes of Links are "0" and  Joints are "1":
+Robot.Nodes =            [ 0  ,  1  ,  0  ,  1  ,  0  ,  1  ,  0  ,  1  ,  0 ];
+% Number of Links  nodes:<Lnk> <Jnt> <Lnk> <Jnt> <Lnk> <Jnt> <Lnk> <Jnt> <Lnk>
+% Number of joints nodes:<0,1> <1,2> <2,3> <3,4> <4,5> <5,6> <6,7> <7,8> <8,e>
+Robot.JointType =        [1,6,6,6];
+% joint_type = Prismatic;(1,2,3)
+% Joint_axis = "X";(1)
+% joint_type = Revolute;(4,5,6)
+% Joint_axis = "Z";(6)
 
 %% Description of model components: 
 % RigidLinks , FlexibleLinks
 % ActiveJoints , PassiveJoints , RigidJoints
-Robot.descriptionLink = ["RigidLinks","FlexibleLinks","FlexibleLinks","RigidLinks"];
+Robot.descriptionLink = ["RigidLinks","FlexibleLinks","FlexibleLinks","RigidLinks","RigidLinks"];
 Robot.descriptionJoint = ["ActiveJoints","PassiveJoints","PassiveJoints","PassiveJoints"];
-
-%% Joint Types:
-% joint_type = Revolute;(1,2,3)
-% Joint_axis = "X";(1)
-% joint_type = Prismatic;(4,5,6)
-% Joint_axis = "X";(4)
-Robot.JointType = [1,4,4,4];
-Robot.numnodes = 9;
 
 
 %% Stiffness Parameters:
